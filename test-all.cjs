@@ -42,6 +42,7 @@ try {
   logSuite('[14/15] Deep Multi-Device Responsive & Layout Verification...');
   require('./verify-responsive-deep.cjs');
   logSuite('[15/15] Usability Issue 3 (Initiate Dialogue Title Case) Verification...');
+  require('./verify-issue3-button.cjs');
   logSuite('ALL 15 SUITES PASSED CLEANLY (100% SUCCESS)!');
   process.exit(0);
 } catch (err) {
