@@ -1,0 +1,277 @@
+/* ==========================================================================
+   HOMEKART REALTY — Luxury Tactile Sliding Toggle System
+   
+   Brand Palette Integration:
+   - Chocolate Brown: #432F2E (and deep nighttime shades #1F1514, #2C1E1D)
+   - Butter Yellow:   #FEEFB8 (subtle core accents and active highlights)
+   - Powder Blue:     #C4DAE8 (subtle focus borders and shadows)
+   - Warm Ivory:      #F7F5F0 (surfaces and pill backgrounds)
+   ========================================================================== */
+
+/* ── 1. Common Toggle Base & Reset ─────────────────────────────────────────── */
+.hk-toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--hk-font-body, system-ui, sans-serif);
+  user-select: none;
+  vertical-align: middle;
+}
+
+.hk-toggle-label {
+  font-size: var(--hk-text-sm, 0.875rem);
+  font-weight: 500;
+  color: var(--hk-chocolate-800, #432F2E);
+  cursor: pointer;
+  letter-spacing: var(--hk-tracking-normal, normal);
+  transition: color 0.2s ease;
+}
+
+.hk-toggle-label--left {
+  order: -1;
+}
+
+.hk-toggle-subtext {
+  display: block;
+  font-size: var(--hk-text-xs, 0.75rem);
+  color: var(--hk-chocolate-500, #705352);
+  font-weight: 400;
+  margin-top: 0.125rem;
+}
+
+/* Visually Hidden Input for Accessible Form Support & Focus Control */
+.hk-toggle__sr-input {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* Visible Keyboard Focus Indicator */
+.hk-toggle__sr-input:focus-visible + .hk-compact-toggle__track,
+.hk-toggle__sr-input:focus-visible + .hk-segmented-toggle__track {
+  outline: 2px solid var(--hk-chocolate-700, #432F2E);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(254, 239, 184, 0.5);
+}
+
+/* ── 2. Compact Tactile Capsule Toggle (variant="compact") ──────────────────── */
+.hk-compact-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hk-compact-toggle__track {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  border-radius: 14px;
+  background: var(--hk-ivory-200, #EAE5D9);
+  border: 1.5px solid var(--hk-chocolate-700, #432F2E);
+  box-shadow: inset 0 2px 4px rgba(67, 47, 46, 0.15);
+  transition:
+    background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hk-toggle__sr-input:checked + .hk-compact-toggle__track {
+  background: var(--hk-chocolate-700, #432F2E);
+  border-color: var(--hk-butter-yellow, #FEEFB8);
+}
+
+.hk-compact-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  border: 1px solid rgba(67, 47, 46, 0.12);
+  box-shadow: 0 2px 5px rgba(67, 47, 46, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hk-toggle__sr-input:checked + .hk-compact-toggle__track .hk-compact-toggle__thumb {
+  transform: translateX(24px);
+  background: var(--hk-butter-yellow, #FEEFB8);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 0 8px rgba(254, 239, 184, 0.6);
+}
+
+.hk-compact-toggle__thumb-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--hk-chocolate-700, #432F2E);
+  transition: background-color 0.2s ease;
+}
+
+.hk-toggle__sr-input:checked + .hk-compact-toggle__track .hk-compact-toggle__thumb-dot {
+  background: var(--hk-chocolate-700, #432F2E);
+}
+
+/* Small Compact Variant */
+.hk-compact-toggle--small .hk-compact-toggle__track {
+  width: 42px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.hk-compact-toggle--small .hk-compact-toggle__thumb {
+  width: 16px;
+  height: 16px;
+  top: 2px;
+  left: 2px;
+}
+
+.hk-compact-toggle--small .hk-toggle__sr-input:checked + .hk-compact-toggle__track .hk-compact-toggle__thumb {
+  transform: translateX(18px);
+}
+
+.hk-compact-toggle--small .hk-compact-toggle__thumb-dot {
+  width: 4px;
+  height: 4px;
+}
+
+/* ── 3. Segmented Sliding Switch (variant="segmented") ──────────────────────── */
+.hk-segmented-toggle {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background: var(--hk-ivory-200, #F7F5F0);
+  border: 1.5px solid var(--hk-chocolate-700, #432F2E);
+  border-radius: 24px;
+  padding: 3px;
+  cursor: pointer;
+  user-select: none;
+  box-shadow: inset 0 2px 4px rgba(67, 47, 46, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hk-segmented-toggle__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.hk-segmented-toggle__slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+  background: var(--hk-chocolate-700, #432F2E);
+  box-shadow: 0 2px 6px rgba(67, 47, 46, 0.22);
+  transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hk-toggle__sr-input:checked + .hk-segmented-toggle__track .hk-segmented-toggle__slider {
+  transform: translateX(100%);
+}
+
+.hk-segmented-toggle__option {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding: 0.35rem 0.9rem;
+  font-size: var(--hk-text-xs, 0.75rem);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--hk-chocolate-700, #432F2E);
+  transition: color 0.25s ease;
+  white-space: nowrap;
+}
+
+.hk-segmented-toggle__option--first {
+  color: var(--hk-butter-yellow, #FEEFB8);
+}
+
+.hk-segmented-toggle__option--second {
+  color: var(--hk-chocolate-700, #432F2E);
+}
+
+.hk-toggle__sr-input:checked + .hk-segmented-toggle__track .hk-segmented-toggle__option--first {
+  color: var(--hk-chocolate-700, #432F2E);
+}
+
+.hk-toggle__sr-input:checked + .hk-segmented-toggle__track .hk-segmented-toggle__option--second {
+  color: var(--hk-butter-yellow, #FEEFB8);
+}
+
+/* ── 4. Twilight Theme Hooks ────────────────────────────────────────────────── */
+html.hk-theme--twilight,
+body.hk-theme--twilight {
+  --hk-bg-primary: #1F1514;
+  --hk-bg-secondary: #281B1A;
+  --hk-bg-surface: #2E1F1E;
+  --hk-bg-elevated: #3A2827;
+  --hk-text-primary: #FAF8F5;
+  --hk-text-secondary: #DFD4C5;
+  --hk-text-tertiary: #AB8F8E;
+  --hk-border-light: rgba(254, 239, 184, 0.15);
+  --hk-border-medium: rgba(254, 239, 184, 0.25);
+  --hk-accent-muted: rgba(196, 218, 232, 0.18);
+  background-color: #1F1514;
+  color: #FAF8F5;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+html.hk-theme--twilight .hk-header--solid {
+  background: rgba(31, 21, 20, 0.94);
+  border-bottom: 1px solid rgba(254, 239, 184, 0.2);
+}
+
+html.hk-theme--twilight .hk-property-card,
+html.hk-theme--twilight .hk-advisor-card,
+html.hk-theme--twilight .hk-consultation-form,
+html.hk-theme--twilight .hk-prop-detail__floor-box,
+html.hk-theme--twilight .hk-prop-detail__calculator {
+  background: #2C1E1D;
+  border-color: rgba(254, 239, 184, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+html.hk-theme--twilight .hk-page-banner {
+  background: linear-gradient(180deg, #181010 0%, #251918 100%);
+}
+
+html.hk-theme--twilight .hk-input,
+html.hk-theme--twilight .hk-select {
+  background: #362423;
+  color: #FAF8F5;
+  border-color: rgba(254, 239, 184, 0.3);
+}
+
+html.hk-theme--twilight .hk-input::placeholder {
+  color: #AB8F8E;
+}
+
+/* ── 5. Reduced Motion ──────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hk-compact-toggle__track,
+  .hk-compact-toggle__thumb,
+  .hk-segmented-toggle__slider {
+    transition-duration: 0.01ms !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,262 @@
+/* ==========================================================================
+   HOMEKART REALTY — Uiverse.io 3D Inset Checkbox System
+   
+   Features:
+   - Soft 3D multi-layered inset-shadow design
+   - Rounded square tactile container
+   - Smooth 200ms pressed-state transition (scale & physical depression)
+   - Animated SVG icon swap: elegant cross morphs to high-contrast checkmark
+   - Adapted to brand palette:
+     • Outer Surface: Chocolate Brown #432F2E
+     • Checked Base: Radiant Butter Yellow #FEEFB8 or Powder Blue #C4DAE8
+     • Checkmark: High-contrast Chocolate Brown #432F2E
+     • Text: Warm Ivory #F7F5F0 / #FAF8F5 or Chocolate Brown
+   ========================================================================== */
+
+.hk-checkbox {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: var(--hk-space-3, 0.75rem);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  font-family: var(--hk-font-body);
+  transition: opacity 0.2s ease;
+  line-height: 1.4;
+}
+
+/* ── Accessible Visually-Hidden Native Checkbox ────────────────────────── */
+.hk-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* ── 3D Inset Box Container ────────────────────────────────────────────── */
+.hk-checkbox__box {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: var(--hk-radius-xs);
+  background: linear-gradient(145deg, #432F2E 0%, #362423 50%, #2A1D1C 100%);
+  border: 1px solid rgba(254, 239, 184, 0.28);
+  
+  /* Soft 3D multi-layered inset & drop shadow */
+  box-shadow: 
+    inset 2px 2px 4px rgba(20, 12, 11, 0.8),
+    inset -2px -2px 4px rgba(254, 239, 184, 0.12),
+    0 2px 6px rgba(44, 30, 29, 0.25);
+    
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  
+  /* Smooth 200ms transition */
+  transition: 
+    background 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────────────── */
+.hk-checkbox--small .hk-checkbox__box {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: var(--hk-radius-xs);
+}
+
+.hk-checkbox--large .hk-checkbox__box {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: var(--hk-radius-sm);
+}
+
+/* ── Hover State ───────────────────────────────────────────────────────── */
+.hk-checkbox:hover .hk-checkbox__box {
+  border-color: rgba(254, 239, 184, 0.5);
+  box-shadow: 
+    inset 2px 2px 5px rgba(20, 12, 11, 0.85),
+    inset -2px -2px 5px rgba(254, 239, 184, 0.2),
+    0 4px 10px rgba(67, 47, 46, 0.35);
+}
+
+/* ── 200ms Pressed-State Transition (Active / Click) ───────────────────── */
+.hk-checkbox:active .hk-checkbox__box {
+  transform: scale(0.92) translateY(1px);
+  box-shadow: 
+    inset 3px 3px 6px rgba(15, 8, 7, 0.95),
+    inset -1px -1px 3px rgba(254, 239, 184, 0.1),
+    0 1px 2px rgba(44, 30, 29, 0.15);
+}
+
+/* ── Focus-Visible Keyboard Accessibility Ring ─────────────────────────── */
+.hk-checkbox__input:focus-visible + .hk-checkbox__box {
+  outline: 2px solid var(--hk-butter-yellow, #FEEFB8);
+  outline-offset: 3px;
+  box-shadow: 
+    inset 2px 2px 4px rgba(20, 12, 11, 0.8),
+    inset -2px -2px 4px rgba(254, 239, 184, 0.15),
+    0 0 0 4px rgba(254, 239, 184, 0.35);
+}
+
+/* ── Animated SVG Icon Swap ────────────────────────────────────────────── */
+.hk-checkbox__icon {
+  width: 15px;
+  height: 15px;
+  pointer-events: none;
+  overflow: visible;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hk-checkbox--small .hk-checkbox__icon {
+  width: 12px;
+  height: 12px;
+}
+
+.hk-checkbox--large .hk-checkbox__icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* 1. Unchecked State: Cross Icon */
+.hk-checkbox__cross {
+  stroke: rgba(254, 239, 184, 0.5);
+  stroke-dasharray: 24;
+  stroke-dashoffset: 0;
+  opacity: 1;
+  transform-origin: center;
+  transform: scale(1) rotate(0deg);
+  transition: 
+    stroke-dashoffset 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 180ms ease,
+    transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 200ms ease;
+}
+
+.hk-checkbox:hover .hk-checkbox__cross {
+  stroke: var(--hk-butter-yellow, #FEEFB8);
+}
+
+/* 2. Checked State: Checkmark Icon (Initially hidden) */
+.hk-checkbox__check {
+  stroke: var(--hk-chocolate-950, #1F1514);
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  opacity: 0;
+  transform-origin: center;
+  transform: scale(0.4) rotate(-15deg);
+  transition: 
+    stroke-dashoffset 200ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 180ms ease,
+    transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── CHECKED STATE: Butter Yellow Variant (Default) ───────────────────── */
+.hk-checkbox__input:checked + .hk-checkbox__box {
+  background: linear-gradient(145deg, #FFF8D9 0%, #FEEFB8 50%, #F5DE88 100%);
+  border-color: #F5DE88;
+  
+  /* Tactile pressed 3D inset highlight */
+  box-shadow: 
+    inset 1px 1px 3px rgba(67, 47, 46, 0.35),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.8),
+    0 3px 10px rgba(254, 239, 184, 0.45);
+}
+
+/* ── CHECKED STATE: Powder Blue Variant ───────────────────────────────── */
+.hk-checkbox--powder .hk-checkbox__input:checked + .hk-checkbox__box {
+  background: linear-gradient(145deg, #E2EDF5 0%, #C4DAE8 50%, #9BC1D8 100%);
+  border-color: #9BC1D8;
+  
+  box-shadow: 
+    inset 1px 1px 3px rgba(67, 47, 46, 0.35),
+    inset -1px -1px 3px rgba(255, 255, 255, 0.8),
+    0 3px 10px rgba(196, 218, 232, 0.45);
+}
+
+/* Swap Icon Animation on Checked */
+.hk-checkbox__input:checked + .hk-checkbox__box .hk-checkbox__cross {
+  stroke-dashoffset: 24;
+  opacity: 0;
+  transform: scale(0.3) rotate(45deg);
+}
+
+.hk-checkbox__input:checked + .hk-checkbox__box .hk-checkbox__check {
+  stroke-dashoffset: 0;
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* ── Label & Description ──────────────────────────────────────────────── */
+.hk-checkbox__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hk-checkbox__label {
+  font-size: var(--hk-text-sm);
+  font-weight: var(--hk-weight-medium, 500);
+  color: var(--hk-chocolate-900, #2C1E1D);
+  transition: color 180ms ease;
+}
+
+.hk-checkbox--dark .hk-checkbox__label {
+  color: #FAF8F5;
+}
+
+.hk-checkbox:hover .hk-checkbox__label {
+  color: var(--hk-chocolate-950, #1F1514);
+}
+
+.hk-checkbox--dark:hover .hk-checkbox__label {
+  color: var(--hk-butter-yellow, #FEEFB8);
+}
+
+.hk-checkbox__desc {
+  font-size: var(--hk-text-xs);
+  color: var(--hk-chocolate-600, #583F3E);
+  line-height: 1.4;
+}
+
+.hk-checkbox--dark .hk-checkbox__desc {
+  color: rgba(250, 248, 245, 0.65);
+}
+
+/* ── Disabled State ───────────────────────────────────────────────────── */
+.hk-checkbox--disabled {
+  opacity: 0.52;
+  cursor: not-allowed !important;
+}
+
+.hk-checkbox__input:disabled + .hk-checkbox__box {
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Reduced-Motion Preferences ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .hk-checkbox__box,
+  .hk-checkbox:active .hk-checkbox__box,
+  .hk-checkbox__icon,
+  .hk-checkbox__cross,
+  .hk-checkbox__check {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+  }
+}

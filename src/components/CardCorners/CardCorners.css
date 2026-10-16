@@ -1,0 +1,309 @@
+/* ==========================================================================
+   HOMEKART REALTY — Uiverse.io by Smit-Prajapati Card Animation System
+   
+   Features:
+   - Layered corner panels (.hk-corner-box 1-4) with organic asymmetrical geometry
+   - Translucent glass surfaces (backdrop-filter blur, soft inset/drop shadows)
+   - Smooth 1-second transitions with staggered corner scaling (0s, 0.15s, 0.3s, 0.45s)
+   - Brand palette integration:
+     * Chocolate Brown #432F2E (translucent ground overlays)
+     * Powder Blue #C4DAE8 (luminous architectural highlights & glass borders)
+     * Butter Yellow #FEEFB8 (restrained warm accents, emblem & glows)
+     * Warm Ivory #F7F5F0 (high-contrast text & surface highlights)
+   - Subtle card scaling and deepened soft shadows on hover/focus-within
+   - Architectural hover details revealed without obscuring core information
+   - Mobile touch-friendly, keyboard-accessible (:focus-within), and reduced-motion compliant
+   ========================================================================== */
+
+/* ── Smit-Prajapati Card Base Styling ──────────────────────────────────── */
+
+.hk-smit-card,
+.hk-diptych-card,
+.hk-lead-residence {
+  position: relative;
+  overflow: hidden !important;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 1s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.8s ease,
+              background-color 0.8s ease;
+  will-change: transform, box-shadow;
+}
+
+.hk-editorial-card {
+  position: relative;
+  overflow: visible;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 1s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.8s ease,
+              background-color 0.8s ease;
+  will-change: transform, box-shadow;
+}
+
+/* Subtle Card Scaling & Soft Luxury Shadow Lift on Hover and Focus-Within */
+.hk-smit-card:hover,
+.hk-smit-card:focus-within,
+.hk-editorial-card:hover,
+.hk-editorial-card:focus-within,
+.hk-diptych-card:hover,
+.hk-diptych-card:focus-within,
+.hk-lead-residence:hover,
+.hk-lead-residence:focus-within {
+  transform: translateY(-6px) scale(1.012);
+  box-shadow:
+    0 26px 54px -10px rgba(67, 47, 46, 0.22),
+    0 0 1px 1.5px rgba(196, 218, 232, 0.75) inset,
+    0 0 24px rgba(254, 239, 184, 0.16);
+  border-color: rgba(196, 218, 232, 0.85);
+}
+
+/* ── Layered Corner Panels System (.hk-card-corners) ───────────────────── */
+
+.hk-card-corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  border-radius: inherit;
+  z-index: 1;
+}
+
+/* Base Corner Box: Asymmetrical Organic Border Radius & Glass Surface */
+.hk-corner-box {
+  position: absolute;
+  padding: 10px;
+  text-align: right;
+  background: rgba(67, 47, 46, 0.26);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-top: 2px solid rgba(254, 239, 184, 0.7);
+  border-right: 1.5px solid rgba(196, 218, 232, 0.75);
+  border-radius: 10% 13% 42% 0% / 10% 12% 75% 0%;
+  box-shadow:
+    rgba(67, 47, 46, 0.26) -7px 7px 29px 0px,
+    inset 0 1px 1px rgba(254, 239, 184, 0.35);
+  transform-origin: bottom left;
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+              background 1s ease,
+              border-color 1s ease,
+              box-shadow 1s ease;
+  will-change: transform;
+}
+
+/* ── Staggered Sizing & Corner Positions ────────────────────────────────── */
+
+/* Box 1 (Outermost Layer — 70% width/height, 0s delay) */
+.hk-corner-box--1 {
+  width: 70%;
+  height: 70%;
+  bottom: -70%;
+  left: -70%;
+  background: rgba(44, 30, 29, 0.44);
+  border-top-color: rgba(254, 239, 184, 0.75);
+  border-right-color: rgba(196, 218, 232, 0.8);
+  transition-delay: 0s;
+}
+
+/* Box 2 (Layer 2 — 50% width/height, 0.15s delay) */
+.hk-corner-box--2 {
+  width: 50%;
+  height: 50%;
+  bottom: -50%;
+  left: -50%;
+  background: rgba(67, 47, 46, 0.34);
+  border-top-color: rgba(196, 218, 232, 0.8);
+  border-right-color: rgba(254, 239, 184, 0.65);
+  transition-delay: 0.15s;
+}
+
+/* Box 3 (Layer 3 — 30% width/height, 0.3s delay) */
+.hk-corner-box--3 {
+  width: 30%;
+  height: 30%;
+  bottom: -30%;
+  left: -30%;
+  background: rgba(196, 218, 232, 0.2);
+  border-top-color: rgba(254, 239, 184, 0.9);
+  border-right-color: rgba(255, 255, 255, 0.85);
+  transition-delay: 0.3s;
+}
+
+/* Box 4 (Innermost Accent — 14% width/height, 0.45s delay) */
+.hk-corner-box--4 {
+  width: 14%;
+  height: 14%;
+  bottom: -14%;
+  left: -14%;
+  background: rgba(254, 239, 184, 0.28);
+  border-top-color: #FFFFFF;
+  border-right-color: rgba(254, 239, 184, 0.9);
+  transition-delay: 0.45s;
+}
+
+/* ── Top-Right Complementary Corner Accent ──────────────────────────────── */
+.hk-corner-accent-tr {
+  position: absolute;
+  top: -16px;
+  right: -16px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 239, 184, 0.45) 0%, rgba(196, 218, 232, 0.15) 60%, transparent 100%);
+  border: 1px solid rgba(196, 218, 232, 0.35);
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.8s ease,
+              border-color 0.8s ease;
+  opacity: 0.45;
+}
+
+/* ── Emblem on Box 1 ───────────────────────────────────────────────────── */
+.hk-corner-box__emblem {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  font-size: 0.875rem;
+  color: var(--hk-butter-yellow, #FEEFB8);
+  opacity: 0.9;
+  filter: drop-shadow(0 0 4px rgba(254, 239, 184, 0.6));
+  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Hover & Focus-Within Interaction: 1-Second Staggered Expansion ─────── */
+.hk-smit-card:hover .hk-corner-box,
+.hk-smit-card:focus-within .hk-corner-box,
+.hk-editorial-card:hover .hk-corner-box,
+.hk-editorial-card:focus-within .hk-corner-box,
+.hk-diptych-card:hover .hk-corner-box,
+.hk-diptych-card:focus-within .hk-corner-box,
+.hk-lead-residence:hover .hk-corner-box,
+.hk-lead-residence:focus-within .hk-corner-box,
+.hk-editorial-showcase__visual-col:hover .hk-corner-box {
+  transform: scale(2.2);
+}
+
+.hk-smit-card:hover .hk-corner-box--1,
+.hk-smit-card:focus-within .hk-corner-box--1,
+.hk-editorial-card:hover .hk-corner-box--1,
+.hk-editorial-card:focus-within .hk-corner-box--1,
+.hk-diptych-card:hover .hk-corner-box--1,
+.hk-diptych-card:focus-within .hk-corner-box--1,
+.hk-lead-residence:hover .hk-corner-box--1,
+.hk-lead-residence:focus-within .hk-corner-box--1 {
+  background: rgba(44, 30, 29, 0.58);
+}
+
+.hk-smit-card:hover .hk-corner-accent-tr,
+.hk-smit-card:focus-within .hk-corner-accent-tr,
+.hk-editorial-card:hover .hk-corner-accent-tr,
+.hk-editorial-card:focus-within .hk-corner-accent-tr,
+.hk-diptych-card:hover .hk-corner-accent-tr,
+.hk-diptych-card:focus-within .hk-corner-accent-tr,
+.hk-lead-residence:hover .hk-corner-accent-tr,
+.hk-lead-residence:focus-within .hk-corner-accent-tr {
+  transform: scale(1.6);
+  opacity: 1;
+  border-color: rgba(254, 239, 184, 0.8);
+}
+
+.hk-smit-card:hover .hk-corner-box__emblem,
+.hk-smit-card:focus-within .hk-corner-box__emblem,
+.hk-editorial-card:hover .hk-corner-box__emblem,
+.hk-editorial-card:focus-within .hk-corner-box__emblem {
+  transform: scale(1.15) rotate(15deg);
+}
+
+
+/* ── Real Estate Content Adaptation: Hover-Revealed Highlights ──────────── */
+
+.hk-editorial-card__hover-feature,
+.hk-diptych-card__hover-feature {
+  position: absolute;
+  bottom: var(--hk-space-3, 0.75rem);
+  left: var(--hk-space-3, 0.75rem);
+  right: var(--hk-space-3, 0.75rem);
+  z-index: 4;
+  background: rgba(44, 30, 29, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(254, 239, 184, 0.45);
+  border-radius: var(--hk-radius-lg, 0.75rem);
+  padding: 0.45rem 0.85rem;
+  color: var(--hk-butter-yellow, #FEEFB8);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hk-editorial-card:hover .hk-editorial-card__hover-feature,
+.hk-editorial-card:focus-within .hk-editorial-card__hover-feature,
+.hk-diptych-card:hover .hk-diptych-card__hover-feature,
+.hk-diptych-card:focus-within .hk-diptych-card__hover-feature {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure text, header, specs, and CTAs remain high above overlays & clickable */
+.hk-editorial-card__content,
+.hk-diptych-card__content,
+.hk-lead-residence__dossier {
+  position: relative;
+  z-index: 3;
+}
+
+.hk-editorial-card__image-container,
+.hk-diptych-card__media,
+.hk-lead-residence__media {
+  position: relative;
+  z-index: 2;
+}
+
+
+/* ── Reduced Motion Accessibility ───────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .hk-smit-card,
+  .hk-editorial-card,
+  .hk-diptych-card,
+  .hk-lead-residence,
+  .hk-corner-box,
+  .hk-corner-accent-tr,
+  .hk-corner-box__emblem,
+  .hk-editorial-card__hover-feature,
+  .hk-diptych-card__hover-feature {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .hk-smit-card:hover,
+  .hk-smit-card:focus-within,
+  .hk-editorial-card:hover,
+  .hk-editorial-card:focus-within,
+  .hk-diptych-card:hover,
+  .hk-diptych-card:focus-within,
+  .hk-lead-residence:hover,
+  .hk-lead-residence:focus-within {
+    transform: none !important;
+  }
+
+  .hk-editorial-card:hover .hk-corner-box,
+  .hk-editorial-card:focus-within .hk-corner-box,
+  .hk-diptych-card:hover .hk-corner-box,
+  .hk-diptych-card:focus-within .hk-corner-box {
+    transform: none !important;
+  }
+
+  .hk-editorial-card__hover-feature,
+  .hk-diptych-card__hover-feature {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

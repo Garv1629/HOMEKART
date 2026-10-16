@@ -1,0 +1,516 @@
+/* ==========================================================================
+   HOMEKART REALTY — Design System Tokens
+   
+   A luxury real-estate design system built on ivory, charcoal & muted bronze.
+   Elegant editorial typography, generous whitespace, cinematic imagery.
+   ========================================================================== */
+
+:root {
+  /* ── Colour Palette: Luxury Powder Blue, Butter Yellow & Chocolate Brown ── */
+
+  /* Warm Ivory / Off-White spectrum — luminous, warm editorial grounds */
+  --hk-ivory-50:   #FDFBF7;
+  --hk-ivory-100:  #FAF8F5;
+  --hk-ivory-200:  #F5EFE6;
+  --hk-ivory-300:  #ECE3D6;
+  --hk-ivory-400:  #DFD4C5;
+  --hk-ivory-500:  #CEBFAD;
+
+  /* Rich Chocolate Brown spectrum — high contrast, editorial weight & warmth */
+  --hk-chocolate-950: #1F1514;
+  --hk-chocolate-900: #2C1E1D;
+  --hk-chocolate-850: #362423;
+  --hk-chocolate-800: #3D2928;
+  --hk-chocolate-700: #432F2E; /* Core reference: #432F2E */
+  --hk-chocolate-600: #583F3E;
+  --hk-chocolate-500: #705352;
+  --hk-chocolate-400: #8C6D6C;
+  --hk-chocolate-300: #AB8F8E;
+  --hk-chocolate-200: #CDBCBC;
+  --hk-chocolate-100: #ECE4E4;
+  --hk-chocolate-50:  #F7F3F3;
+
+  /* Powder Blue spectrum — refined airy architectural accent */
+  --hk-powder-blue:        #C4DAE8; /* Core reference: #C4DAE8 */
+  --hk-powder-blue-light:  #E2EDF5;
+  --hk-powder-blue-subtle: #F0F6FA;
+  --hk-powder-blue-dark:   #9BC1D8;
+  --hk-powder-blue-deep:   #5C8CA9;
+  --hk-powder-blue-rich:   #3B6C8A;
+
+  /* Butter Yellow spectrum — warm radiant luxury highlight */
+  --hk-butter-yellow:        #FEEFB8; /* Core reference: #FEEFB8 */
+  --hk-butter-yellow-light:  #FFF8D9;
+  --hk-butter-yellow-subtle: #FFFDEE;
+  --hk-butter-yellow-dark:   #F5DE88;
+  --hk-butter-yellow-warm:   #DDBE59;
+  --hk-butter-yellow-deep:   #9E822E;
+
+  /* Powder Blue numbered scale aliases */
+  --hk-powder-50:   var(--hk-powder-blue-subtle);
+  --hk-powder-100:  var(--hk-powder-blue-light);
+  --hk-powder-200:  var(--hk-powder-blue);
+  --hk-powder-300:  var(--hk-powder-blue-dark);
+  --hk-powder-400:  var(--hk-powder-blue-deep);
+  --hk-powder-500:  var(--hk-powder-blue-rich);
+
+  /* Butter Yellow numbered scale aliases */
+  --hk-butter-50:   var(--hk-butter-yellow-subtle);
+  --hk-butter-100:  var(--hk-butter-yellow-light);
+  --hk-butter-200:  var(--hk-butter-yellow);
+  --hk-butter-300:  var(--hk-butter-yellow-dark);
+  --hk-butter-400:  var(--hk-butter-yellow-warm);
+  --hk-butter-500:  var(--hk-butter-yellow-deep);
+
+  /* Legacy charcoal aliases mapped to rich chocolate brown for backward compatibility */
+  --hk-charcoal-900: var(--hk-chocolate-900);
+  --hk-charcoal-800: var(--hk-chocolate-800);
+  --hk-charcoal-700: var(--hk-chocolate-700);
+  --hk-charcoal-600: var(--hk-chocolate-600);
+  --hk-charcoal-500: var(--hk-chocolate-500);
+  --hk-charcoal-400: var(--hk-chocolate-400);
+  --hk-charcoal-300: var(--hk-chocolate-300);
+
+  /* Legacy bronze aliases mapped harmoniously to butter yellow / rich chocolate gold */
+  --hk-bronze-600: var(--hk-butter-yellow-deep);
+  --hk-bronze-500: var(--hk-chocolate-700);
+  --hk-bronze-400: var(--hk-butter-yellow-warm);
+  --hk-bronze-300: var(--hk-butter-yellow-dark);
+  --hk-bronze-200: var(--hk-butter-yellow);
+  --hk-bronze-100: var(--hk-butter-yellow-light);
+
+  /* Semantic aliases */
+  --hk-bg-primary:    var(--hk-ivory-100);
+  --hk-bg-secondary:  var(--hk-ivory-50);
+  --hk-bg-surface:    #FFFFFF;
+  --hk-bg-elevated:   var(--hk-ivory-200);
+  --hk-bg-dark:       var(--hk-chocolate-800);
+  --hk-bg-darker:     var(--hk-chocolate-900);
+
+  --hk-text-primary:   var(--hk-chocolate-900);
+  --hk-text-secondary: var(--hk-chocolate-600);
+  --hk-text-tertiary:  var(--hk-chocolate-400);
+  --hk-text-inverse:   var(--hk-ivory-50);
+  --hk-text-accent:    var(--hk-chocolate-700);
+
+  --hk-border-light:   var(--hk-ivory-300);
+  --hk-border-medium:  var(--hk-ivory-400);
+  --hk-border-dark:    var(--hk-chocolate-700);
+  --hk-border-accent:  rgba(196, 218, 232, 0.6);
+  --hk-border-butter:  rgba(254, 239, 184, 0.7);
+
+  --hk-accent:         var(--hk-powder-blue);
+  --hk-accent-hover:   var(--hk-powder-blue-dark);
+  --hk-accent-muted:   var(--hk-powder-blue-light);
+  --hk-accent-gold:    var(--hk-butter-yellow);
+  --hk-accent-gold-hover: var(--hk-butter-yellow-dark);
+  --hk-accent-contrast: var(--hk-chocolate-700);
+
+  /* Status */
+  --hk-success: #3D6E50;
+  --hk-error:   #8C3838;
+  --hk-warning: #9E822E;
+
+  /* ── Typography ──────────────────────────────────────────────────────── */
+
+  /* High-contrast luxury editorial serif for headlines (inspired by Bodoni, Bodoni FLF, Playfair Display SC, Safira March) */
+  --hk-font-display: 'Bodoni Moda', 'Playfair Display', 'Didot', 'Bodoni MT', Georgia, serif;
+
+  /* Clean modern sans-serif for body & UI (Montserrat / Source Sans Pro) */
+  --hk-font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Elegant romantic script font for occasional flourishes (inspired by Sloop Script, Symphony) */
+  --hk-font-script: 'Pinyon Script', 'Alex Brush', cursive;
+
+  /* Font family aliases */
+  --hk-font-sans: var(--hk-font-body);
+  --hk-font-serif: var(--hk-font-display);
+
+  /* Type scale (modular, ~1.25 ratio) */
+  --hk-text-2xs:   0.6875rem;  /* 11px */
+  --hk-text-xs:    0.75rem;    /* 12px */
+  --hk-text-label: 0.8125rem;  /* 13px */
+  --hk-text-sm:    0.875rem;   /* 14px */
+  --hk-text-base:  1rem;       /* 16px */
+  --hk-text-lg:   1.125rem;   /* 18px */
+  --hk-text-xl:   1.25rem;    /* 20px */
+  --hk-text-2xl:  1.5rem;     /* 24px */
+  --hk-text-3xl:  1.875rem;   /* 30px */
+  --hk-text-4xl:  2.25rem;    /* 36px */
+  --hk-text-5xl:  3rem;       /* 48px */
+  --hk-text-6xl:  3.75rem;    /* 60px */
+  --hk-text-7xl:  4.5rem;     /* 72px */
+
+  /* Line heights */
+  --hk-leading-tight:  1.15;
+  --hk-leading-snug:   1.3;
+  --hk-leading-normal: 1.6;
+  --hk-leading-relaxed: 1.8;
+
+  /* Letter spacing */
+  --hk-tracking-tight:    -0.02em;
+  --hk-tracking-normal:    0;
+  --hk-tracking-wide:      0.05em;
+  --hk-tracking-wider:     0.1em;
+  --hk-tracking-widest:    0.2em;
+
+  /* Font weights */
+  --hk-weight-light:    300;
+  --hk-weight-regular:  400;
+  --hk-weight-medium:   500;
+  --hk-weight-semibold: 600;
+  --hk-weight-bold:     700;
+
+  /* ── Spacing Scale (8px grid) ────────────────────────────────────────── */
+
+  --hk-space-1:   0.25rem;   /* 4px */
+  --hk-space-2:   0.5rem;    /* 8px */
+  --hk-space-3:   0.75rem;   /* 12px */
+  --hk-space-4:   1rem;      /* 16px */
+  --hk-space-5:   1.25rem;   /* 20px */
+  --hk-space-6:   1.5rem;    /* 24px */
+  --hk-space-7:   1.75rem;   /* 28px */
+  --hk-space-8:   2rem;      /* 32px */
+  --hk-space-10:  2.5rem;    /* 40px */
+  --hk-space-12:  3rem;      /* 48px */
+  --hk-space-16:  4rem;      /* 64px */
+  --hk-space-20:  5rem;      /* 80px */
+  --hk-space-24:  6rem;      /* 96px */
+  --hk-space-32:  8rem;      /* 128px */
+
+  /* Section padding — generous whitespace */
+  --hk-section-py:     var(--hk-space-24);
+  --hk-section-py-sm:  var(--hk-space-16);
+
+  /* ── Layout ──────────────────────────────────────────────────────────── */
+
+  --hk-container-max:    1280px;
+  --hk-container-narrow: 960px;
+  --hk-container-wide:   1440px;
+  --hk-container-px:     var(--hk-space-6);
+
+  /* ── Borders & Radii (Large Rounded Luxury Corners) ──────────────────── */
+
+  --hk-radius-none: 0;
+  --hk-radius-xs:   6px;
+  --hk-radius-sm:   10px;
+  --hk-radius-md:   16px;
+  --hk-radius-lg:   22px;
+  --hk-radius-xl:   28px;
+  --hk-radius-2xl:  36px;
+  --hk-radius-3xl:  48px;
+  --hk-radius-full: 9999px;
+
+  /* ── Shadows & Soft Ambient Elevations ───────────────────────────────── */
+
+  --hk-shadow-sm:   0 2px 8px rgba(67, 47, 46, 0.04);
+  --hk-shadow-md:   0 8px 24px -4px rgba(67, 47, 46, 0.07);
+  --hk-shadow-lg:   0 16px 44px -8px rgba(67, 47, 46, 0.09);
+  --hk-shadow-xl:   0 28px 72px -16px rgba(67, 47, 46, 0.12);
+  --hk-shadow-card: 0 14px 40px -10px rgba(67, 47, 46, 0.07), 0 0 1px rgba(67, 47, 46, 0.1);
+
+  /* ── Ultra-Luxury Glassmorphism System ────────────────────────────────── */
+
+  --hk-glass-bg:               rgba(255, 255, 255, 0.78);
+  --hk-glass-bg-subtle:        rgba(255, 255, 255, 0.55);
+  --hk-glass-bg-elevated:      rgba(255, 255, 255, 0.92);
+  --hk-glass-bg-powder:        rgba(196, 218, 232, 0.28);
+  --hk-glass-bg-butter:        rgba(254, 239, 184, 0.32);
+  --hk-glass-border:           1px solid rgba(255, 255, 255, 0.85);
+  --hk-glass-border-subtle:    1px solid rgba(255, 255, 255, 0.5);
+  --hk-glass-border-powder:    1px solid rgba(196, 218, 232, 0.65);
+  --hk-glass-border-butter:    1px solid rgba(254, 239, 184, 0.75);
+  --hk-glass-border-chocolate: 1px solid rgba(67, 47, 46, 0.22);
+  --hk-glass-border-specular:  1px solid rgba(255, 255, 255, 0.95);
+  --hk-glass-blur:             blur(18px);
+  --hk-glass-blur-lg:          blur(28px);
+  --hk-glass-shadow:           0 20px 50px -12px rgba(67, 47, 46, 0.08), 0 0 1px 1px rgba(255, 255, 255, 0.7) inset;
+  --hk-glass-shadow-hover:     0 30px 64px -14px rgba(67, 47, 46, 0.14), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+
+  /* Dark chocolate glass tokens */
+  --hk-glass-dark-bg:          rgba(44, 30, 29, 0.82);
+  --hk-glass-dark-border:      1px solid rgba(254, 239, 184, 0.22);
+  --hk-glass-dark-border-powder: 1px solid rgba(196, 218, 232, 0.35);
+  --hk-glass-shadow-dark:      0 24px 60px rgba(31, 21, 20, 0.5), 0 0 1px 1px rgba(255, 255, 255, 0.08) inset;
+
+  /* ── Motion & Animation System (Quiet Luxury) ───────────────────────── */
+
+  --hk-ease-out:       cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --hk-ease-in-out:    cubic-bezier(0.42, 0, 0.58, 1);
+  --hk-ease-elegant:   cubic-bezier(0.16, 1, 0.3, 1);
+  --hk-ease-editorial: cubic-bezier(0.16, 1, 0.3, 1);
+  --hk-ease-gentle:    cubic-bezier(0.25, 1, 0.5, 1);
+  --hk-ease-hover:     cubic-bezier(0.2, 0.8, 0.2, 1);
+  --hk-ease-snap:      cubic-bezier(0.4, 0, 0.2, 1);
+
+  --hk-duration-instant: 100ms;
+  --hk-duration-fast:    180ms;
+  --hk-duration-normal:  320ms;
+  --hk-duration-slow:    550ms;
+  --hk-duration-slower:  850ms;
+  --hk-duration-page:    320ms;
+
+  /* ── Z-index scale ───────────────────────────────────────────────────── */
+
+  --hk-z-base:     0;
+  --hk-z-above:    10;
+  --hk-z-sticky:   100;
+  --hk-z-overlay:  200;
+  --hk-z-modal:    300;
+  --hk-z-toast:    400;
+}
+
+/* ==========================================================================
+   Global Reset & Base Styles
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--hk-font-body);
+  font-weight: var(--hk-weight-regular);
+  font-size: var(--hk-text-base);
+  line-height: var(--hk-leading-normal);
+  color: var(--hk-text-primary);
+  background-color: var(--hk-bg-primary);
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+}
+
+/* ── Typography Utilities ──────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--hk-font-display);
+  font-weight: var(--hk-weight-regular);
+  line-height: var(--hk-leading-tight);
+  letter-spacing: var(--hk-tracking-tight);
+  color: var(--hk-text-primary);
+}
+
+h1 {
+  font-size: var(--hk-text-6xl);
+  font-weight: var(--hk-weight-light);
+}
+
+h2 {
+  font-size: var(--hk-text-5xl);
+  font-weight: var(--hk-weight-light);
+}
+
+h3 {
+  font-size: var(--hk-text-4xl);
+}
+
+h4 {
+  font-size: var(--hk-text-3xl);
+}
+
+h5 {
+  font-size: var(--hk-text-2xl);
+}
+
+h6 {
+  font-size: var(--hk-text-xl);
+}
+
+p {
+  line-height: var(--hk-leading-normal);
+  color: var(--hk-text-secondary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--hk-duration-fast) var(--hk-ease-out);
+}
+
+a:hover {
+  color: var(--hk-text-accent);
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+input, textarea, select {
+  font-family: var(--hk-font-body);
+  font-size: var(--hk-text-base);
+  border: none;
+  outline: none;
+  background: none;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ── Layout Utilities ──────────────────────────────────────────────────── */
+
+.hk-container {
+  width: 100%;
+  max-width: var(--hk-container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--hk-container-px);
+  padding-right: var(--hk-container-px);
+}
+
+.hk-container--narrow {
+  max-width: var(--hk-container-narrow);
+}
+
+.hk-container--wide {
+  max-width: var(--hk-container-wide);
+}
+
+.hk-section {
+  padding-top: var(--hk-section-py);
+  padding-bottom: var(--hk-section-py);
+}
+
+/* ── Label / Overline ──────────────────────────────────────────────────── */
+
+.hk-overline {
+  font-family: var(--hk-font-body);
+  font-size: var(--hk-text-xs);
+  font-weight: var(--hk-weight-semibold);
+  letter-spacing: var(--hk-tracking-widest);
+  text-transform: uppercase;
+  color: var(--hk-text-accent);
+}
+
+/* ── Dividers ──────────────────────────────────────────────────────────── */
+
+.hk-divider {
+  border: none;
+  height: 1px;
+  background-color: var(--hk-border-light);
+}
+
+.hk-divider--bronze {
+  background-color: var(--hk-accent);
+  height: 2px;
+  width: 48px;
+}
+
+/* ── Focus styles for accessibility ────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid var(--hk-accent);
+  outline-offset: 2px;
+}
+
+/* ── Selection ─────────────────────────────────────────────────────────── */
+
+::selection {
+  background-color: var(--hk-accent-muted);
+  color: var(--hk-text-primary);
+}
+
+/* ── Smooth scroll offset for fixed header ─────────────────────────────── */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--hk-header-height, 80px) + 24px);
+}
+
+/* ── Responsive typography ─────────────────────────────────────────────── */
+
+@media (max-width: 1024px) {
+  h1 { font-size: var(--hk-text-5xl); }
+  h2 { font-size: var(--hk-text-4xl); }
+  h3 { font-size: var(--hk-text-3xl); }
+
+  :root {
+    --hk-section-py: var(--hk-space-16);
+  }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: var(--hk-text-4xl); }
+  h2 { font-size: var(--hk-text-3xl); }
+  h3 { font-size: var(--hk-text-2xl); }
+
+  :root {
+    --hk-section-py: var(--hk-space-12);
+    --hk-container-px: var(--hk-space-4);
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: var(--hk-text-3xl); }
+  h2 { font-size: var(--hk-text-2xl); }
+
+  :root {
+    --hk-section-py: var(--hk-space-10);
+  }
+}
+
+@media (max-width: 360px) {
+  h1 { font-size: var(--hk-text-2xl); }
+  h2 { font-size: var(--hk-text-xl); }
+
+  :root {
+    --hk-container-px: var(--hk-space-3);
+    --hk-section-py: var(--hk-space-8);
+  }
+}
+
+/* ── Reduced motion preference ─────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .hk-page-transition-wrap,
+  .hk-lead-residence__img,
+  .hk-diptych-card__img,
+  .hk-editorial-card__image,
+  .hk-editorial-showcase__image,
+  .hk-hero__bg,
+  .hk-hero__reveal,
+  .hk-sh,
+  .hk-sh--visible,
+  .hk-lead-residence,
+  .hk-diptych-card,
+  .hk-home-brand,
+  .hk-about-manifesto,
+  .hk-about-pillars,
+  .hk-about-timeline,
+  .hk-about-leaders {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
